@@ -1,0 +1,13 @@
+.search-results button{
+    padding: 8px 16px;
+    background-color: #29335C;
+    border-radius: 8px;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: -0.4000000059604645px;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+}
