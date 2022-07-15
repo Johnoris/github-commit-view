@@ -34,17 +34,30 @@
 a{
     text-decoration: none;
 }
-.d-none{
+.none-d{
     display: none;
 }
 @media (min-width: 768px) {
+
+    .commit-search-bar{
+        margin-top: 0 !important;
+    }
+    .commit-search-bar input{
+        width: 95%;
+    }
+}
+@media (min-width: 970px) {
     .commit-header{
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
     }
     .commit-search-bar{
         margin-top: 0 !important;
+    }
+    .none-d{
+        display: block;
     }
 }
 @media (min-width: 1240px) {

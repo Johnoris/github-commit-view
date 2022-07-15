@@ -8,7 +8,7 @@ const Button = (user) => {
 
     return(
         <div className='search-results'>
-            <Link to ><button>{full_name}</button></Link> 
+            <Link to="/commits" ><button>{full_name}</button></Link> 
         </div>
     )
 }

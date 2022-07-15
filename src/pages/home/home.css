@@ -71,7 +71,7 @@ nav ul li{
     border: none;
     background-color: #DFE4EA;
     height: 28px;
-    width: 171px;
+    width: 80%;
     outline: none;
     font-family: Inter;
     font-size: 20px;
@@ -148,6 +148,22 @@ nav ul li{
     padding-top: 40px;
     align-items: center;
 }
+.suggested-repo{
+    flex-direction: column;
+    justify-content: center;
+}
+.suggested-repo h2{
+    font-family: Inter;
+    color: #18214D;
+}
+@media(max-width: 430px){
+    .search-bar{
+        width: 80%;
+    }
+    .commits{
+        width: 80%;
+    }
+}
 @media(min-width: 768px){
     .home-page{
         padding: 48px 145px;
@@ -192,9 +208,5 @@ nav ul li{
     }
     .home-page p{
         max-width: 238px;
-    }
-    .suggested-repo{
-        flex-direction: row;
-        justify-content: center;
     }
 }

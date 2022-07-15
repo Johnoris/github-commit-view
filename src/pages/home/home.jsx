@@ -1,6 +1,6 @@
 import './home.css'
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from '../../axios';
 import Button from '../../components/button/button';
 
@@ -34,7 +34,7 @@ const fetchUsers = async () => {
 }
 const fetchTrendingUsers = async () => {
     try {
-        const { data } =await axios.get("search/repositories?q=language:javaScript+sort:stars")
+        const { data } =await axios.get("search/repositories?q=language:javaScript+sort:stars&per_page=5")
         return data?.items
     }
     catch (err){
@@ -45,8 +45,11 @@ const handleFetchTrendingUsers = async () =>{
         const items = await fetchTrendingUsers();
         setTrendingUsers(items)
 }
+useEffect(() => {
+    handleFetchTrendingUsers();
+}, [])
 
-handleFetchTrendingUsers();
+
     return(
         <div className='home-page'>
             <div className='home-top'>
