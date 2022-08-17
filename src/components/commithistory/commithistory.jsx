@@ -6,7 +6,6 @@ import { CommitLinkContext } from '../../App'
 
 const Messages = (props) => {
     const [commitLink ,setCommitLink] = useContext(CommitLinkContext)
-    console.log(commitLink)
     useEffect(() => {
         handleFetchCommits();
     }, [])
@@ -27,10 +26,6 @@ const Messages = (props) => {
     return (
         <div className="commit-history">
             {fetchedCommits? fetchedCommits.map( commits =>{
-                console.log(commits?.commit?.message)
-                console.log(commits?.commit?.committer?.name)
-                console.log(commits?.author?.avatar_url)
-                console.log(commits?.commit?.committer?.date)
                 return <CommitMessages key={commits?.author?.id} commitmessage={commits?.commit?.message} name={commits?.commit?.committer?.name} avatarimg={commits?.author?.avatar_url} date={commits?.commit?.committer?.date}/>
             }): <h2>Your search did not bring up any results...</h2> }
         </div>
