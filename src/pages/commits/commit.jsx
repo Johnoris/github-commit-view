@@ -16,6 +16,7 @@ const handleQueryInput = (e) => {
 }
 const handleSearchUsers = async (e) =>{
     e.preventDefault();
+    setIsLoading(true)
     if (repo){
         const items = await fetchUsers();
         setUsers(items)
@@ -29,6 +30,7 @@ const handleSearchUsers = async (e) =>{
 const fetchUsers = async () => {
     try {
         const { data } =await axios.get("search/repositories?q="  + repo)
+        console.log(data?.items)
         return data?.items
     }
     catch (err){
@@ -37,24 +39,27 @@ const fetchUsers = async () => {
 }
 
 
-    const [isLoading, setIsLoading]= useState(true)
+    const [isLoading, setIsLoading]= useState()
     return(
         <div className='commit-page'>
                 <div className='commit-header'>
                     <h3>CommitViewer</h3>
-                    <div className='searchbar-wrapper none-d commit-search-bar'>
+                    <div className='searchbar-wrapper none-d commit-search-bar commits-search-bar'>
                         <div className='search-bar .commit-searchbar'>
-                            <img src={require("../../assets/images/search-icon.png")}/>
+                            <img src={require("../../assets/images/search-icon.png")} alt=""/>
                             <input type='text' onChange={handleQueryInput} placeholder="Eg. facebook/react"/>
                         </div>
-                        <button onClick={handleSearchUsers} className='commits' href="#">See commits 🚀</button>
+                        <button onClick={handleSearchUsers} className='commits-button' href="#">See commits 🚀</button>
                     </div>
                 </div>
                 <div className='repo-search'>
                     {users? users.map( user =>{
                         return <Button key={user.id} full_name={user.full_name}/>
                     }): <h2>Your search did not bring up any results...</h2> }
+                    {isLoading === false &&  users.length < 1 && <h2>Your search did not bring up any results...</h2>}
+                    {isLoading && <h2>Loading...</h2>}
                 </div>
+                <Messages/>
         </div>
     )
 }

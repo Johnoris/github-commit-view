@@ -31,6 +31,27 @@
     text-align: center;
     color: #18214D;
 }
+.commits-button{
+    height: 58px;
+    width: 200px;
+    border-radius: 8px;
+    border: none;
+    background-color: #F3663F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #ffffff;
+}
+.commit-search-bar{
+    padding: 30px;
+}
 a{
     text-decoration: none;
 }
@@ -68,4 +89,5 @@ a{
     .commit-searchbar{
         width: 666px;
     }
+
 }

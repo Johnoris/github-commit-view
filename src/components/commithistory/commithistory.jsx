@@ -1,22 +1,55 @@
 import './commithistory.css'
-import axios from '../../axios';
+import Api from '../../axios';
+import { useState, useEffect } from 'react';
+import { useContext } from 'react'
+import { CommitLinkContext } from '../../App'
 
-const Messages = () => {
-
+const Messages = (props) => {
+    const [commitLink ,setCommitLink] = useContext(CommitLinkContext)
+    console.log(commitLink)
+    useEffect(() => {
+        handleFetchCommits();
+    }, [])
+    const [fetchedCommits, setFetchedCommits] = useState([])
+    const fetchCommits= async() => {
+        try {
+            const { data } = await Api.get("repos/" + commitLink +"/commits")
+            return data
+        }
+        catch (error) {
+            console.log (error)
+        }
+    }
+    const handleFetchCommits = async (e) =>{
+        const commits = await fetchCommits();
+        setFetchedCommits(commits)
+    }
+    return (
+        <div className="commit-history">
+            {fetchedCommits? fetchedCommits.map( commits =>{
+                console.log(commits?.commit?.message)
+                console.log(commits?.commit?.committer?.name)
+                console.log(commits?.author?.avatar_url)
+                console.log(commits?.commit?.committer?.date)
+                return <CommitMessages key={commits?.author?.id} commitmessage={commits?.commit?.message} name={commits?.commit?.committer?.name} avatarimg={commits?.author?.avatar_url} date={commits?.commit?.committer?.date}/>
+            }): <h2>Your search did not bring up any results...</h2> }
+        </div>
+    )
+}
+const CommitMessages= (props) => {
     return(
         <>  
-            <h1></h1>
             <div className='messages'>
-                <h5 className='d-yes'>Log all errors to console.error by default (#21130)</h5>
+                <h5 className='d-yes'>{props.commitmessage}</h5>
                 <div className='messages-info'>
                     <div className='messages-info-1'>
                         <div className='messages-img-container'>
-                            <img src={require('../../assets/images/default-img.png')}/>
-                            <h6>gaearon</h6>
+                            <img src={props.avatarimg} alt=""/>
+                            <h6>{props.name}</h6>
                         </div>
-                        <h5 className='d-no'>Log all errors to console.error by default (#21130)</h5>
+                        <h5 className='d-no'>{props.commitmessage}</h5>
                     </div>
-                    <div className='messages-date'><p>23:30 28/04/2021</p></div>
+                    <div className='messages-date'><p>{props.date}</p></div>
                 </div>
             </div>
         </>

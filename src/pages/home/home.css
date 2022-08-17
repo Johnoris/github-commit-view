@@ -152,7 +152,7 @@ nav ul li{
     flex-direction: column;
     justify-content: center;
 }
-.suggested-repo h2{
+ h2{
     font-family: Inter;
     color: #18214D;
 }
@@ -204,7 +204,6 @@ nav ul li{
     }
     .commits{
         margin-top: 0;
-        width: 210px;
     }
     .home-page p{
         max-width: 238px;

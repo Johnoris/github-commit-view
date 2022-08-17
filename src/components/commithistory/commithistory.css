@@ -1,14 +1,18 @@
 .messages{
-    padding: 0 32px;
+    padding: 10px 32px;
+    box-shadow: 0px 10px 10px rgba(14, 58, 162, 0.2);
+    width: 80%;
+    border-radius: 8px;
 }
-.messages h5{
+.commit-history{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+h5{
     font-family: Inter;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 28px;
-    letter-spacing: -0.4000000059604645px;
-    text-align: left;
-    color: #18214D;   
+    font-size: 10px;
 }
 .messages-info{
     display: flex;
@@ -22,6 +26,7 @@
 .messages-img-container img{
     width: 30px;
     height: 30px;
+    border-radius: 50%;
 }
 .messages-img-container h6{
     font-family: Inter;
@@ -54,9 +59,6 @@
     .messages-img-container{
         flex-direction: column;
     }
-    .messages{
-        padding: 0 145px;
-    }
     .messages-img-container img{
         width: 60px;
         height: 60px;
@@ -67,11 +69,37 @@
     }
     .messages-info-1{
         display: flex;
-        gap: 77px;
+        gap: 30px;
         align-items: center;
     }
     .messages-info{
-        justify-content: space-around;
         align-items: center;
+    }
+}
+@media (max-width: 1300px) {
+    .messages{
+        padding: 20px 70px;
+    }
+}
+@media (max-width: 1300px) {
+    .messages{
+        padding: 20px 30px;
+    }
+}
+@media (max-width: 550px) {
+    .messages-info{
+        flex-direction: column;
+    }
+    .messages-date{
+        text-align: left;
+        margin-top: 20px;
+    }
+}
+@media (min-width: 900px) {
+    h5{
+        font-size: 14px;
+    }
+    .messages-info-1{
+        gap: 77px;
     }
 }
