@@ -16,10 +16,10 @@ const handleQueryInput = (e) => {
     const value = e.target.value;
     setRepo(value)
 }
-const handleSearchUsers = async (e) =>{
-    setSearchLoading(true)
-    e.preventDefault();
+const handleSearchUsers = async (input) =>{
+    input.preventDefault();
     if (repo){
+        setSearchLoading(true)
         const items = await fetchUsers();
         setUsers(items)
         setSearchLoading(false)

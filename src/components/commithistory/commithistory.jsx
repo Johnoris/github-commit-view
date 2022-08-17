@@ -27,7 +27,7 @@ const Messages = (props) => {
         <div className="commit-history">
             {fetchedCommits? fetchedCommits.map( commits =>{
                 return <CommitMessages key={commits?.author?.id} commitmessage={commits?.commit?.message} name={commits?.commit?.committer?.name} avatarimg={commits?.author?.avatar_url} date={commits?.commit?.committer?.date}/>
-            }): <h2>Your search did not bring up any results...</h2> }
+            }): <h2>No commits...</h2> }
         </div>
     )
 }
